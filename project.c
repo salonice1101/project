@@ -48,3 +48,54 @@ void fifo()
 	scanf("%d",&psize);
 	for(i=0;i<psize;i++)	
 	{
+				fr[i]=-1;
+	}
+	while(s<n)	
+	{
+		flag=0;
+		num=pg[s];
+		for(i=0;i<psize;i++)
+		{
+			if(num==fr[i])
+			{
+				s++;
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0)
+		{
+			if(r<psize)
+			{	
+				fr[r]=pg[s];
+				r++;
+				s++;
+				count++;
+			}
+			else
+			{
+				if(f<psize)
+				{
+					fr[f]=pg[s];
+					s++;
+					f++;
+					count++;
+				}
+				else 
+					f=0;
+			}
+		}
+		printf("\n");			
+		for(i=0;i<psize;i++)
+		{
+			printf("%d\t",fr[i]);
+		}
+	}
+printf("\nPage Faults=%d",count);
+getchar();
+}
+void optimal()
+{
+	int count[10],i,j,k,fault,f,flag,temp,current,c,dist,max,m,cnt,p,x;
+	fault=0;
+
