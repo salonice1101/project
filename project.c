@@ -198,3 +198,32 @@ void lru()
 			fault++;			
 			for(cnt=0;cnt<f;cnt++)			
 			{
+				current=fr[cnt];
+				for(c=i;c>0;c--)
+				{
+					if(current!=pg[c])
+						count[cnt]++;
+					else
+						break;
+				}
+			}
+			max=0;
+			for(m=0;m<f;m++)
+			{
+				if(count[m]>max)
+				{
+					max=count[m];
+					p=m;
+				}
+			}
+			fr[p]=temp;
+		}
+		printf("\n");			
+		for(x=0;x<f;x++)
+		{
+			printf("%d\t",fr[x]);
+		}
+	}
+	printf("\nTotal number of faults=%d",fault);
+	getchar();
+}
